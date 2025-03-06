@@ -7,8 +7,8 @@
     "start": "nodemon server.js",
     "start:prod": "cross-env NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
-    "watch:js": "parcel watch ./public/js/index.js --dist-dir ./public/js",
-    "build:js": "parcel build ./public/js/index.js --dist-dir ./public/js"
+    "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
+    "build:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
   "author": "Caia Robert",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "axios": "^1.8.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.7",
+    "core-js": "^3.41.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-mongo-sanitize": "^2.2.0",
@@ -44,7 +45,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.4",
     "lint-staged": "^15.4.3",
-    "parcel": "^2.13.3",
+    "parcel-bundler": "^1.12.5",
     "prettier": "^3.4.2"
   },
   "husky": {

@@ -2,18 +2,23 @@ doctype html
 html
   head
     block head
-      meta(charset="UTF-8") 
+      meta(charset="UTF-8")
       meta(name="viewport" content="width=device-width, initial-scale=1.0")
+
+      // Adjusted Content Security Policy for external resources
+      link(rel='stylesheet', href='/node_modules/leaflet/dist/leaflet.css')
+      script(src='/node_modules/leaflet/dist/leaflet.js')
+
       link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css')
       link(rel="stylesheet" href="/css/style.css")
-      link(rel="shorcut icon" type="image/png" href="/img/favicon.png")
+      link(rel="shortcut icon" type="image/png" href="/img/favicon.png")
       link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300i,700")
       title Natours | #{title}
 
   body
     // HEADER
     include _header
-    
+
     // CONTENT
     block content 
       h1 This is a placeholder heading
@@ -21,7 +26,5 @@ html
     // FOOTER
     include _footer
 
-    //- script(src="/js/axios.min.js")
-    //- script(src="/js/leafletjs.js")
-    //- script(src="/js/login.js")
+    // Main JavaScript file that contains your bundled JS code
     script(src="/js/bundle.js")

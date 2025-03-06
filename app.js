@@ -23,9 +23,23 @@ app.set("views", path.join(__dirname, "views"));
 // 1) GLOBAL MIDDLEWARES
 // Serving static files
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 
 // Set security HTTP headers
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'", "https://unpkg.com", "https://cdnjs.cloudflare.com"],
+        scriptSrc: ["'self'", "https://unpkg.com", "https://cdnjs.cloudflare.com"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com", "https://unpkg.com"],
+        imgSrc: ["'self'", "data:", "https://*.tile.openstreetmap.org"],
+        fontSrc: ["'self'", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
+        connectSrc: ["'self'", "ws://127.0.0.1:53557", "https://unpkg.com"],
+      },
+    },
+  })
+);
 
 // Development logging
 if (process.env.NODE_ENV === "development") {
@@ -62,7 +76,7 @@ app.use(
       "difficulty",
       "price",
     ],
-  }),
+  })
 );
 
 // Test middleware
