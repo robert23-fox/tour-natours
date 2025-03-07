@@ -1341,3 +1341,49 @@ body {
   border: none;
   cursor: pointer;
 }
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-left: -30px;
+  fill: #777;
+}
+
+.eye-icon:hover {
+  fill: #000;
+}
+
+
+/* Spinner */
+.btn[data-spinner="true"].loading {
+  position: relative;
+  pointer-events: none; /* Disable button click while loading */
+  opacity: 0.7; /* Optional for visual effect */
+}
+
+.btn[data-spinner="true"].loading::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border: 2px solid transparent;
+  border-top: 2px solid #fff; /* Spinner color */
+  border-radius: 50%;
+  position: absolute;
+  right: 10px; /* Adjust spinner position */
+  top: 50%;
+  transform: translateY(-50%);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+/* Spinner */
