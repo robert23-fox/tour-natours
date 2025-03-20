@@ -2,9 +2,15 @@
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
   ],
+  "rewrites": [
+    { "source": "/tour/:slug", "destination": "/tour/:slug" },
+    { "source": "/me", "destination": "/me" },
+    { "source": "/my-tours", "destination": "/my-tours" },
+    { "source": "/login", "destination": "/login" }
+  ],
   "builds": [
     {
-      "src": "app.js",
+      "src": "index.js", 
       "use": "@vercel/node"
     }
   ]
