@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
+    "build": "nodemon server.js",
     "dev": "nodemon server.js",
     "start:prod": "cross-env NODE_ENV=production nodemon server.js",
     "debug": "ndb server.js",
