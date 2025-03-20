@@ -1,4 +1,4 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY || "fallback_test_key");
 const Tour = require("../models/tourModel");
 const Booking = require("../models/bookingModel");
 const AppError = require("../utils/appError");
@@ -15,6 +15,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   if (!req.user || !req.user.email) {
     return next(new AppError("User not authenticated", 401));
   }
+
+  console.log("Render Stripe Secret Key:", process.env.STRIPE_SECRET_KEY);
 
   // 2) Create checkout session
   const session = await stripe.checkout.sessions.create({
@@ -39,6 +41,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
       }
     ]
   });
+
+  console.log("Stripe Secret Key:", process.env.STRIPE_SECRET_KEY);
 
   const fullSession = await stripe.checkout.sessions.retrieve(session.id, {
     expand: ["line_items"],
